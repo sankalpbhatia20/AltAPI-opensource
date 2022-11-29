@@ -20,6 +20,8 @@ def insider_trades_data(asset):
         df.reset_index(inplace=True)
         #print(df)
 
+        df = df[:20]
+
         result = df.to_json(orient="records")
         insider_trades_json = json.loads(result)
         
