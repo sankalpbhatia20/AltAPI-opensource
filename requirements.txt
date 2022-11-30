@@ -20,3 +20,5 @@ openbb
 selenium==4.6.0
 alembic==1.8.1
 parsel==1.7.0
+transformers==4.24.0
+torch==1.13.0

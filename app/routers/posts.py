@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path, Response, status, HTTPException, Depends, APIRouter
+from fastapi import FastAPI, Path, Response, status, HTTPException, Depends, APIRouter, File, UploadFile
 from typing import Optional
 from sqlalchemy.orm import Session
 from .. import models, schemas
@@ -8,6 +8,7 @@ from app.news_extraction import *
 from app.short_interest import *
 from app.analysts_ratings import *
 from app.insider_trades import *
+from app.text_analysis import *
 
 router = APIRouter(
     tags=['Functionalities']
@@ -27,6 +28,19 @@ def sentiment_extraction(asset: str = Path(None, description = "Enter the asset 
         return value
     except Exception as e:
         return {"error" : e}
+    
+@router.post('/text-analysis/' ,status_code=status.HTTP_202_ACCEPTED)
+async def text_file_analysis(file: UploadFile = File(...)):
+    try:
+        response = await file.read()
+
+        print(response)
+        analysis = text_analysis(response)
+
+        return analysis
+    except Exception as e:
+        return {"Error" : e}
+        #return {"Error" : "Are you sure you've provided a Text (.txt) Document?"}
 
 @router.get('/short-interest/{asset}', status_code=status.HTTP_202_ACCEPTED)
 def short_interest(asset: str = Path(None, description = "Enter the TICKER of the company: "), db: Session = Depends(get_db)): #, user_id: int = Depends(oauth2.get_current_user)):
@@ -67,6 +81,3 @@ def insider_trades(US_stock_ticker: str = Path(None, description = "Enter the TI
     except Exception as e:
         print(e)
         return {"Error" : "Are you sure you've entered a US Stock Ticker? Maybe try again?"}
-
-
-
