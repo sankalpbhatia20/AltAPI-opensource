@@ -35,12 +35,6 @@ def text_analysis(response):
     avg_negative = df['negative'].mean()
     avg_neutral = df['neutral'].mean()
 
-    #print("Overall Positive Score: {}".format(avg_positive))
-    #print("Overall Negative Score: {}".format(avg_negative))
-    #print("Overall Neutral Score: {}".format(avg_neutral))
-
-    #print(df.head(5))
-
     json_result = df.to_json(orient="records")
     text_analysis_json = json.loads(json_result)
 
