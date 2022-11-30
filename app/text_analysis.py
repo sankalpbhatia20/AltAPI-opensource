@@ -6,13 +6,28 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 
+from rake_nltk import Rake # To find keywords
+
+
 def text_analysis(response):
+    #rake_nltk_var = Rake()
+
     tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
     model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert")
 
-    response_split_list = str(response).split('. ')
+    # Finding Keywords
+    #rake_nltk_var.extract_keywords_from_text(str(response))
+    #keyword_extracted = rake_nltk_var.get_ranked_phrases()
 
-    print(response_split_list)
+    #keywords_dict = {"keywords" : keyword_extracted}
+
+    # Text Sentiment Analysis
+    response = str(response)
+
+    response = response.replace("\\xe2\\x80\\x99", "") # Removes apostrophe (')
+    response_split_list = response.split('. ')
+
+    #print(response_split_list)
 
     tokens = tokenizer(response_split_list , padding = True, truncation = True, return_tensors='pt')
     #print(tokens)
@@ -37,6 +52,8 @@ def text_analysis(response):
 
     json_result = df.to_json(orient="records")
     text_analysis_json = json.loads(json_result)
+
+    #text_analysis_json.insert(0, keywords_dict)
 
     text_analysis_json.insert(0, {'overall_positive_score':avg_positive,
                                     'overall_negative_score':avg_negative,
