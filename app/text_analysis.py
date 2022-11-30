@@ -6,28 +6,32 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 
-from rake_nltk import Rake # To find keywords
+from spacy_download import load_spacy
 
 
 def text_analysis(response):
-    #rake_nltk_var = Rake()
+
+    try:
+        nlp = load_spacy("en_core_web_sm")
+    except Exception as e:
+        return {"Error" : e}
 
     tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
     model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert")
 
-    # Finding Keywords
-    #rake_nltk_var.extract_keywords_from_text(str(response))
-    #keyword_extracted = rake_nltk_var.get_ranked_phrases()
+    response = str(response)
+    response = response.replace("\\xe2\\x80\\x99", "") # Removes apostrophe (')
 
-    #keywords_dict = {"keywords" : keyword_extracted}
+    # Finding Keywords
+    doc = nlp(response)
+    keywords_extracted = list(doc.ents)
+    
+    keywords_extracted = [str(keyword) for keyword in keywords_extracted]
+
+    keywords_dict = {"keywords" : keywords_extracted}
 
     # Text Sentiment Analysis
-    response = str(response)
-
-    response = response.replace("\\xe2\\x80\\x99", "") # Removes apostrophe (')
     response_split_list = response.split('. ')
-
-    #print(response_split_list)
 
     tokens = tokenizer(response_split_list , padding = True, truncation = True, return_tensors='pt')
     #print(tokens)
@@ -53,9 +57,9 @@ def text_analysis(response):
     json_result = df.to_json(orient="records")
     text_analysis_json = json.loads(json_result)
 
-    #text_analysis_json.insert(0, keywords_dict)
+    text_analysis_json.insert(0, keywords_dict)
 
-    text_analysis_json.insert(0, {'overall_positive_score':avg_positive,
+    text_analysis_json.insert(1, {'overall_positive_score':avg_positive,
                                     'overall_negative_score':avg_negative,
                                     'overall_neutral_score':avg_neutral})
 

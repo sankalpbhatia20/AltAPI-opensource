@@ -33,8 +33,7 @@ def sentiment_extraction(asset: str = Path(None, description = "Enter the asset 
 async def text_file_analysis(file: UploadFile = File(...)):
     try:
         response = await file.read()
-
-        print(response)
+        
         analysis = text_analysis(response)
 
         return analysis

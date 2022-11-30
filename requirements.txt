@@ -23,3 +23,4 @@ parsel==1.7.0
 transformers==4.24.0
 torch==1.13.0
 rake-nltk==1.0.6
+spacy-download==1.0.0
