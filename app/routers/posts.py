@@ -9,6 +9,7 @@ from app.short_interest import *
 from app.analysts_ratings import *
 from app.insider_trades import *
 from app.text_analysis import *
+from app.esg import *
 
 router = APIRouter(
     tags=['Functionalities']
@@ -41,7 +42,7 @@ async def text_file_analysis(file: UploadFile = File(...)):
         return {"Error" : e}
         #return {"Error" : "Are you sure you've provided a Text (.txt) Document?"}
 
-@router.get('/short-interest/{asset}', status_code=status.HTTP_202_ACCEPTED)
+'''@router.get('/short-interest/{asset}', status_code=status.HTTP_202_ACCEPTED)
 def short_interest(asset: str = Path(None, description = "Enter the TICKER of the company: "), db: Session = Depends(get_db)): #, user_id: int = Depends(oauth2.get_current_user)):
     try:
         short_interest_value = short_info(asset)
@@ -52,7 +53,15 @@ def short_interest(asset: str = Path(None, description = "Enter the TICKER of th
 
         return short_interest_value
     except:
-        return {"error" : "There is no short interest data available on {} yet. Have you entered a valid ticker? If yes, then kindly check back later".format(asset)}
+        return {"error" : "There is no short interest data available on {} yet. Have you entered a valid ticker? If yes, then kindly check back later".format(asset)}'''
+
+@router.get('/esg/{US_stock_ticker}' ,status_code=status.HTTP_202_ACCEPTED)
+def esg(US_stock_ticker: str = Path(None, description = "Enter the TICKER of the company: ")): # Not using DataBase because response can differ
+    try:
+        esg_df = esg_scores(US_stock_ticker)
+        return esg_df
+    except:
+        return {"Error" : "Are you sure you've entered a US Stock Ticker? Maybe try again?"}
 
 @router.get('/analyst-ratings/{US_stock_ticker}' ,status_code=status.HTTP_202_ACCEPTED)
 def analyst_ratings(US_stock_ticker: str = Path(None, description = "Enter the TICKER of the company: ")): # Not using DataBase because response can differ

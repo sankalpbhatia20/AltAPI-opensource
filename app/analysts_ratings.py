@@ -5,6 +5,7 @@ import json
 def analyst_rating(asset):
     
     df = (openbb.stocks.dd.analyst(asset))
+    print(df)
 
     asset_list = [asset] * len(df)
     try:
@@ -18,7 +19,6 @@ def analyst_rating(asset):
         
         return analyst_rating_json
         
-    except:
+    except Exception as e:
+        print(e)
         return {"Error" : "Make sure you have entered a valid US stock ticker"}
-
-#analyst_rating(ticker)
