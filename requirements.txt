@@ -31,4 +31,4 @@ rapidfuzz
 #bertopic==0.13.0
 poetry
 pyproject-toml==0.0.10
-bt==0.2.9
+#bt==0.2.9
