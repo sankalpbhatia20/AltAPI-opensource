@@ -28,4 +28,7 @@ spacy-download==1.0.0
 linearmodels==4.27
 rapidfuzz
 pyproject-toml==0.0.10
+manimlib==0.2.0
+sox==1.4.1
+ffmpeg==1.4
 bt==0.2.9
