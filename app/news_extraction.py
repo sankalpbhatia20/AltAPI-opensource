@@ -3,19 +3,13 @@ import pandas as pd
 import datetime as dt
 from datetime import date
 import nltk
-import urllib.request
-from bs4 import BeautifulSoup
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from GoogleNews import GoogleNews
 from newspaper import Article
 from newspaper import Config
-from dateutil.relativedelta import relativedelta
-import json
 import ssl
 
 import uuid
-
-from random import randrange
 
 from timeit import default_timer as timer
 
@@ -59,8 +53,10 @@ def news(asset, start_date = user_date, end_date = user_date):
                     article.download() #downloading the article 
                     article.parse() #parsing the article
                     article.nlp() #performing natural language processing (nlp)
-                except:
-                    return {"Error" : "No news has been published about {} today till now. Try again soon!".format(asset)}
+                except Exception as e:
+                    pass
+                    #return {"Error" : e}
+                    #return {"Error" : "No news has been published about {} today till now. Try again soon!".format(asset)}
                 #storing results in our empty dictionary
                 dict['Date']=df['date'][i] 
                 dict['Media']=df['media'][i]
@@ -76,7 +72,7 @@ def news(asset, start_date = user_date, end_date = user_date):
                 news_df=pd.DataFrame(list) #creating dataframe
         else:
             print('Error')
-    except Exception as e:
+    except:
         return {"Error" : "No news has been published about {} today till now. Try again soon!".format(asset)}
 
     #Sentiment Analysis
@@ -94,6 +90,7 @@ def news(asset, start_date = user_date, end_date = user_date):
     negative_list = []
     positive_list = []
 
+    print(news_df)
     #Iterating over the tweets in the dataframe
     try:
         for news in news_df['Summary']:
@@ -113,8 +110,9 @@ def news(asset, start_date = user_date, end_date = user_date):
             elif pos == neg:
                 neutral_list.append(news) #appending the news that satisfies this condition
                 neutral += 1 #increasing the count by 1 
-    except:
-        return {"Error":"No news available to run sentiment analysis on the asset entered"}
+    except Exception as e:
+        return {"Error: " + str(e)}
+        #return {"Error":"No news available to run sentiment analysis on the asset entered"}
 
     try:
         positive = percentage(positive, len(news_df)) #percentage is the function defined above
@@ -157,4 +155,5 @@ def news(asset, start_date = user_date, end_date = user_date):
         "top_url": top_url
         }
 
+    print(x)
     return x

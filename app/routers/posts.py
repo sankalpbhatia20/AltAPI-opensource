@@ -5,7 +5,6 @@ from .. import models, schemas
 from .. database import get_db
 
 from app.news_extraction import *
-from app.short_interest import *
 from app.analysts_ratings import *
 from app.insider_trades import *
 from app.text_analysis import *
@@ -21,6 +20,7 @@ def sentiment_extraction(asset: str = Path(None, description = "Enter the asset 
     try:
         #print(current_user.email)
         value = (news(asset))
+        print(value)
         new_data = models.SentimentAnalysis(**value) #** unpacks the dictionary
         db.add(new_data)
         db.commit()
@@ -41,19 +41,6 @@ async def text_file_analysis(file: UploadFile = File(...)):
     except Exception as e:
         return {"Error" : e}
         #return {"Error" : "Are you sure you've provided a Text (.txt) Document?"}
-
-'''@router.get('/short-interest/{asset}', status_code=status.HTTP_202_ACCEPTED)
-def short_interest(asset: str = Path(None, description = "Enter the TICKER of the company: "), db: Session = Depends(get_db)): #, user_id: int = Depends(oauth2.get_current_user)):
-    try:
-        short_interest_value = short_info(asset)
-        new_data = models.ShortInterest(**short_interest_value) #** unpacks the dictionary
-        db.add(new_data)
-        db.commit()
-        db.refresh(new_data)
-
-        return short_interest_value
-    except:
-        return {"error" : "There is no short interest data available on {} yet. Have you entered a valid ticker? If yes, then kindly check back later".format(asset)}'''
 
 @router.get('/esg/{US_stock_ticker}' ,status_code=status.HTTP_202_ACCEPTED)
 def esg(US_stock_ticker: str = Path(None, description = "Enter the TICKER of the company: ")): # Not using DataBase because response can differ

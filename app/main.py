@@ -7,7 +7,6 @@ from pydantic import BaseModel
 from datetime import datetime, date
 
 from app.news_extraction import *
-from app.short_interest import *
 from app.analysts_ratings import *
 
 import psycopg2
