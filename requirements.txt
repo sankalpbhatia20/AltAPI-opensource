@@ -26,5 +26,5 @@ torch==1.13.0
 rake-nltk==1.0.6
 spacy-download==1.0.0
 linearmodels==4.27
-rapidfuzz==2.13.7
+rapidfuzz
 bt==0.2.9
