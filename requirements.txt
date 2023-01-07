@@ -16,7 +16,7 @@ bcrypt==4.0.1
 python-jose==3.3.0
 cryptography==38.0.3
 python-multipart==0.0.5
-openbb
+openbb==2.0.0
 streamlit==1.16.0
 selenium==4.6.0
 alembic==1.8.1
