@@ -27,8 +27,7 @@ rake-nltk==1.0.6
 spacy-download==1.0.0
 linearmodels==4.27
 rapidfuzz
-#hdbscan==0.8.29
-#bertopic==0.13.0
+gcc7==0.0.9
 pip-manager==1.0.4
 bt==0.2.9
 poetry
