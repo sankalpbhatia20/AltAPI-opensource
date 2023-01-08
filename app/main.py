@@ -45,4 +45,4 @@ app.include_router(posts.router)
 
 @app.get('/')
 def home():
-    return {"Homepage":"WELCOME TO SENTIMENT ANALYSIS API!!"}
+    return {"Homepage":"WELCOME TO ALTAPI!!"}
