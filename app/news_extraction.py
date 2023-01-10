@@ -54,7 +54,9 @@ def news(asset, start_date = user_date, end_date = user_date):
                     article.parse() #parsing the article
                     article.nlp() #performing natural language processing (nlp)
                 except Exception as e:
-                    pass
+                    print('***FAILED TO DOWNLOAD***', article.url)
+                    #continue
+                    #continue
                     return {"Error" : e}
                     #return {"Error" : "No news has been published about {} today till now. Try again soon!".format(asset)}
                 #storing results in our empty dictionary

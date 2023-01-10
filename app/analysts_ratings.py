@@ -7,15 +7,16 @@ def analyst_rating(asset):
     df = (openbb.stocks.dd.analyst(asset))
     print(df)
 
-    #asset_list = [asset] * len(df)
+    asset_list = [asset] * len(df)
     try:
-        #df.reset_index(inplace=True)
+        df.reset_index(inplace=True)
         #print(df)
 
-        #df['asset'] = asset_list
+        df['asset'] = asset_list
 
         result = df.to_json(orient="records")
         analyst_rating_json = json.loads(result)
+        print(analyst_rating_json)
         
         return analyst_rating_json
         
