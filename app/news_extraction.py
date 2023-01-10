@@ -2,6 +2,7 @@ from time import strftime
 import pandas as pd
 import datetime as dt
 from datetime import date
+from dateutil.relativedelta import relativedelta
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from GoogleNews import GoogleNews
@@ -14,10 +15,14 @@ import uuid
 from timeit import default_timer as timer
 
 today = date.today()
-user_date = today.today()
+user_date = today.today() + relativedelta(weeks=-1)
 user_date = user_date.strftime("%m-%d-%Y")
+end_date = today.today().strftime("%m-%d-%Y")
 
-def news(asset, start_date = user_date, end_date = user_date):
+print('start date: {}'.format(user_date))
+print('end date: {}'.format(end_date))
+
+def news(asset, start_date = user_date, end_date = end_date):
     #start_date = "11-04-2022"
     try:
         _create_unverified_https_context = ssl._create_unverified_context
@@ -35,14 +40,16 @@ def news(asset, start_date = user_date, end_date = user_date):
     #end_date = start_date
 
     try:
+        print(asset)
         if asset != '':
             #Extract News with Google News
             googlenews = GoogleNews(start = start_date, end = end_date)
             googlenews.search(asset)
             result = googlenews.result()
+            print(result)
             #store the results
             df = pd.DataFrame(result)
-            #print(df)
+            print(df)
             top_url = (df["link"][0])
 
             list =[] #creating an empty list 
@@ -53,21 +60,26 @@ def news(asset, start_date = user_date, end_date = user_date):
                     article.download() #downloading the article 
                     article.parse() #parsing the article
                     article.nlp() #performing natural language processing (nlp)
-                except Exception as e:
-                    print('***FAILED TO DOWNLOAD***', article.url)
+                #except Exception as e:
+                    #pass
+                    #print('***FAILED TO DOWNLOAD***', article.url)
+                    #return {"Error" : e}
+
                     #continue
-                    #continue
-                    return {"Error" : e}
                     #return {"Error" : "No news has been published about {} today till now. Try again soon!".format(asset)}
                 #storing results in our empty dictionary
-                dict['Date']=df['date'][i] 
-                dict['Media']=df['media'][i]
-                dict['Title']=article.title
-                dict['Article']=article.text
-                dict['Summary']=article.summary
-                dict['Key_words']=article.keywords
-                #print(dict)
-                list.append(dict)
+                    dict['Date']=df['date'][i] 
+                    dict['Media']=df['media'][i]
+                    dict['Title']=article.title
+                    dict['Article']=article.text
+                    dict['Summary']=article.summary
+                    dict['Key_words']=article.keywords
+                    #print(dict)
+                    list.append(dict)
+                #check_empty = not any(list)
+                except Exception as e:
+                    print(e)
+                    pass
             check_empty = not any(list)
             #print(check_empty)
             if check_empty == False:
