@@ -9,7 +9,7 @@ def analyst_rating(asset):
 
     asset_list = [asset] * len(df)
     try:
-        df.reset_index(inplace=True)
+        #df.reset_index(inplace=True)
         #print(df)
 
         df['asset'] = asset_list
