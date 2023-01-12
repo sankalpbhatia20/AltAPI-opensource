@@ -1,5 +1,5 @@
 
-![Logo](https://www.dropbox.com/s/5bb6e2urw7wepct/Black%20Minimal%20Motivation%20Quote%20LinkedIn%20Banner%20%282%29.png?dl=0)
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
 
 # AltAPI - Open Source Project
@@ -16,12 +16,6 @@ We welcome developers to contribute to this open source project with various for
 Our current POSTMAN Documentation can be found at [here](https://documenter.getpostman.com/view/21763231/2s8Z75SVJ2)
 
 
-## 🚀 About Me
-I'm a tech and finance enthusiast who is looking to democratizing Alternative Data for the masses for FREE! 🥳
-
-This open source project is a tiny step towards that! Although the start is small, our goal is huge and would love the help of other developers to contribute to this project 👨‍💻
-
-
 ## 🎯 Our Target
 
 - Currently, our only target is to **Add more alternative data endpoints**
@@ -35,3 +29,8 @@ This open source project is a tiny step towards that! Although the start is smal
 **Server:** FastAPI
 
 **Database:** PostgreSQL
+
+## 🚀 About Me
+I'm a tech and finance enthusiast who is looking to democratizing Alternative Data for the masses for FREE! 🥳
+
+This open source project is a tiny step towards that! Although the start is small, our goal is huge and would love the help of other developers to contribute to this project 👨‍💻
