@@ -2,7 +2,7 @@
 ![Logo](https://user-images.githubusercontent.com/82900390/212009250-f6d23f93-e3e3-4567-a405-77e366a5ff56.png)
 
 
-#AltAPI - Open Source Project
+## AltAPI - Open Source Project
 
 Businesses from Investment Firms to Marketing Agencies care about what's going on in the world. Traditional data has reached millions of decision making people, thus, leaving no to very little scope for that EXTRA EDGE we all are looking for to be at the top of our industries.📊
 
