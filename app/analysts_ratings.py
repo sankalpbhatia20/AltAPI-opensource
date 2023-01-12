@@ -16,7 +16,7 @@ def analyst_rating(asset):
 
         result = df.to_json(orient="records")
         analyst_rating_json = json.loads(result)
-        print(analyst_rating_json)
+        #print(analyst_rating_json)
         
         return analyst_rating_json
         
