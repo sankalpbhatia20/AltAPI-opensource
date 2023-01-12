@@ -13,7 +13,7 @@ We welcome developers to contribute to this open source project with various for
 
 ## 📑 Documentation
 
-Our current POSTMAN Documentation can be found at [here](https://documenter.getpostman.com/view/21763231/2s8Z75SVJ2)
+Our current POSTMAN Documentation can be found [here](https://documenter.getpostman.com/view/21763231/2s8Z75SVJ2)
 
 
 ## 🎯 Our Target
