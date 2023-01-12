@@ -1,5 +1,5 @@
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://www.dropbox.com/s/5bb6e2urw7wepct/Black%20Minimal%20Motivation%20Quote%20LinkedIn%20Banner%20%282%29.png?dl=0)
 
 
 # AltAPI - Open Source Project
