@@ -22,7 +22,7 @@ Our current POSTMAN Documentation can be found at [here](https://documenter.getp
 
 
 
-## Tech Stack
+## 💻 Tech Stack
 
 **Scripting Language:** Python
 
@@ -34,3 +34,4 @@ Our current POSTMAN Documentation can be found at [here](https://documenter.getp
 I'm a tech and finance enthusiast who is looking to democratizing Alternative Data for the masses for FREE! 🥳
 
 This open source project is a tiny step towards that! Although the start is small, our goal is huge and would love the help of other developers to contribute to this project 👨‍💻
+
