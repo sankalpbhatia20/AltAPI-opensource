@@ -90,7 +90,6 @@ def news(asset, start_date = user_date, end_date = end_date):
         return {"Error" : "No news has been published about {} today till now. Try again soon!".format(asset)}
 
     #Sentiment Analysis
-    #start = timer()
     def percentage(part,whole):
         return 100 * float(part)/float(whole)
 
