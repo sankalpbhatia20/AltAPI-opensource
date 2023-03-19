@@ -3,8 +3,7 @@ import pandas as pd
 import json
 
 def analyst_rating(asset):
-    
-    df = (openbb.stocks.dd.analyst(asset))
+    df = (openbb.stocks.fa.analyst(asset))
     print(df)
 
     asset_list = [asset] * len(df)
