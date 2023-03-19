@@ -16,7 +16,7 @@ router = APIRouter(
 
 # GET METHOD for today's data
 @router.get('/sentiment/{asset}', status_code=status.HTTP_202_ACCEPTED)
-def sentiment_extraction(asset: str = Path(None, description = "Enter the asset name you want the sentiment analysis for: "), db: Session = Depends(get_db)): #current_user: int = Depends(oauth2.get_current_user)):
+def sentiment_extraction(asset: str = Path(..., description = "Enter the asset name you want the sentiment analysis for: "), db: Session = Depends(get_db)): #current_user: int = Depends(oauth2.get_current_user)):
     try:
         #print(current_user.email)
         value = (news(asset))
@@ -43,7 +43,7 @@ async def text_file_analysis(file: UploadFile = File(...)):
         #return {"Error" : "Are you sure you've provided a Text (.txt) Document?"}
 
 @router.get('/esg/{US_stock_ticker}' ,status_code=status.HTTP_202_ACCEPTED)
-def esg(US_stock_ticker: str = Path(None, description = "Enter the TICKER of the company: ")): # Not using DataBase because response can differ
+def esg(US_stock_ticker: str = Path(..., description = "Enter the TICKER of the company: ")): # Not using DataBase because response can differ
     try:
         esg_df = esg_scores(US_stock_ticker)
         return esg_df
@@ -51,7 +51,7 @@ def esg(US_stock_ticker: str = Path(None, description = "Enter the TICKER of the
         return {"Error" : "Are you sure you've entered a US Stock Ticker? Maybe try again?"}
 
 @router.get('/analyst-ratings/{US_stock_ticker}' ,status_code=status.HTTP_202_ACCEPTED)
-def analyst_ratings(US_stock_ticker: str = Path(None, description = "Enter the TICKER of the company: ")): # Not using DataBase because response can differ
+def analyst_ratings(US_stock_ticker: str = Path(..., description = "Enter the TICKER of the company: ")): # Not using DataBase because response can differ
     try:
         rating = analyst_rating(US_stock_ticker)
 
@@ -60,7 +60,7 @@ def analyst_ratings(US_stock_ticker: str = Path(None, description = "Enter the T
         return {"Error" : "Are you sure you've entered a US Stock Ticker? Maybe try again?"}
 
 @router.get('/insider-trades/{US_stock_ticker}' ,status_code=status.HTTP_202_ACCEPTED)
-def insider_trades(US_stock_ticker: str = Path(None, description = "Enter the TICKER of the company: "), db: Session = Depends(get_db)):
+def insider_trades(US_stock_ticker: str = Path(..., description = "Enter the TICKER of the company: "), db: Session = Depends(get_db)):
     try:
         insider_trades = insider_trades_data(US_stock_ticker)
 
