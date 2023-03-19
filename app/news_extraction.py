@@ -12,6 +12,7 @@ import ssl
 
 import uuid
 
+from newsSummarization import text_summarization
 from timeit import default_timer as timer
 
 today = date.today()
@@ -155,6 +156,7 @@ def news(asset, start_date = user_date, end_date = end_date):
         return {"Error" : "No news to analyse for the given date"}
 
     # For URL Text extraction
+    summary = text_summarization(top_url)
 
     # Creating data dictionary and converting into JSON
     id = uuid.uuid1()
@@ -165,7 +167,8 @@ def news(asset, start_date = user_date, end_date = end_date):
         "date" : start_date,
         "compound_positivity_score" : positivity_index,
         "compound_sentiment": sentiment,
-        "top_url": top_url
+        "top_url": top_url,
+        "top_url_summary": summary
         }
 
     return x

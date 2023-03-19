@@ -15,6 +15,7 @@ class SentimentAnalysis(Base):
     compound_positivity_score = Column(Numeric, nullable = False)
     compound_sentiment = Column(String, nullable = False)
     top_url = Column(Text, nullable = False)
+    top_url_summary = Column(Text, nullable = False)
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
 
 class ShortInterest(Base):

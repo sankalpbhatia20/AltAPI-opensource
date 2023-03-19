@@ -8,6 +8,7 @@ class UserInput(BaseModel): # Schema Validation
     compound_positivity_score: float
     compound_sentiment: float
     top_url: str
+    top_url_summary: str
 
     class Config:
         orm_mode = True
