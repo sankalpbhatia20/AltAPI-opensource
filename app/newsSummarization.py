@@ -1,7 +1,12 @@
 import requests
 import time
 from bs4 import BeautifulSoup
-from .config import settings
+#from config import settings
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 def text_summarization(top_url):
@@ -23,7 +28,7 @@ def text_summarization(top_url):
     print(text_contents)
 
     API_URL = "https://api-inference.huggingface.co/models/human-centered-summarization/financial-summarization-pegasus"
-    headers = {"Authorization": f"Bearer {settings.huggingface_token}"}
+    headers = {"Authorization": f'Bearer {os.getenv("HUGGINGFACE_TOKEN")}'}
 
     def query(payload):
         response = requests.post(API_URL, headers=headers, json=payload)
@@ -35,7 +40,7 @@ def text_summarization(top_url):
 
     time.sleep(5)
 
-    if output[0]['summary_text'] == "Access Denied":
-        return "We apologise. This text cannot be summarized"
-    else:
+    try:
         return (output[0]['summary_text'])
+    except:
+        return "Our progeam cannot access this URL"
