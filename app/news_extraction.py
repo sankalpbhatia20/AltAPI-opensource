@@ -12,7 +12,7 @@ import ssl
 
 import uuid
 
-from newsSummarization import text_summarization
+from .newsSummarization import text_summarization
 from timeit import default_timer as timer
 
 today = date.today()
