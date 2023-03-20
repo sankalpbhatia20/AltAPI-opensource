@@ -43,4 +43,4 @@ def text_summarization(top_url):
     try:
         return (output[0]['summary_text'])
     except:
-        return "Unfortunately we do not have access to this specific URL"
+        return ("Unfortunately we do not have access to this specific URL")
