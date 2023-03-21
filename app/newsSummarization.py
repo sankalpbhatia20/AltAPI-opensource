@@ -1,7 +1,6 @@
 import requests
 import time
 from bs4 import BeautifulSoup
-#from config import settings
 
 from dotenv import load_dotenv
 import os
