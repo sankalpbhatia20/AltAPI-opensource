@@ -33,3 +33,4 @@ gcc7
 bt==0.2.9
 poetry
 pyproject-toml==0.0.10
+google-play-scraper==1.2.3
