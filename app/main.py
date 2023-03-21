@@ -31,7 +31,12 @@ start_date = start_date.strftime("%m-%d-%Y")
 
 app = FastAPI()
 
-origins = ["*"]
+origins = [
+    "http://127.0.0.1:8000/",
+    "https://rapidapi.com",
+    "https://altapi1.p.rapidapi.com"
+    ]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
