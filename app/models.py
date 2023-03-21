@@ -18,6 +18,16 @@ class SentimentAnalysis(Base):
     top_url_summary = Column(Text, nullable = False)
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
 
+class GooglePlayStoreReviewAnalysis(Base):
+    __tablename__ = 'google_playstore_app_reviews' # Table name
+
+    id = Column(String, primary_key = True, nullable = False)
+    company = Column(String, nullable = False)
+    overall_rating = Column(Numeric, nullable = False)
+    most_negative_comment = Column(Text, nullable = False)
+    most_postive_comment = Column(Text, nullable = False)
+    created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+
 class ShortInterest(Base):
     __tablename__ = 'short_interest' # Another table name
 

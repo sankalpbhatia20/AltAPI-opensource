@@ -6,6 +6,7 @@ from .. database import get_db
 
 from app.news_extraction import *
 from app.analysts_ratings import *
+from app.appRating import *
 from app.insider_trades import *
 from app.text_analysis import *
 from app.esg import *
@@ -29,6 +30,20 @@ def sentiment_extraction(asset: str = Path(..., description = "Enter the asset n
         return value
     except Exception as e:
         return {"error" : e}
+
+@router.get('/playstore-reviews-analysis/{company}', status_code=status.HTTP_202_ACCEPTED)
+def google_playstore_app_reviews(company: str = Path(..., description = "Enter the company you want Google Playstore Review Analysis for: ")): # , db: Session = Depends(get_db)):
+    try:
+        review_analysis = (get_google_playstore_app_reviews(company))
+        print(review_analysis)
+        #new_data = models.GooglePlayStoreReviewAnalysis(**review_analysis) #** unpacks the dictionary
+        #db.add(new_data)
+        #db.commit()
+        #db.refresh(new_data)
+
+        return review_analysis
+    except Exception as e:
+        return {"error" : e}
     
 @router.post('/text-analysis/' ,status_code=status.HTTP_202_ACCEPTED)
 async def text_file_analysis(file: UploadFile = File(...)):
@@ -40,7 +55,6 @@ async def text_file_analysis(file: UploadFile = File(...)):
         return analysis
     except Exception as e:
         return {"Error" : e}
-        #return {"Error" : "Are you sure you've provided a Text (.txt) Document?"}
 
 @router.get('/esg/{US_stock_ticker}' ,status_code=status.HTTP_202_ACCEPTED)
 def esg(US_stock_ticker: str = Path(..., description = "Enter the TICKER of the company: ")): # Not using DataBase because response can differ
