@@ -32,7 +32,7 @@ start_date = start_date.strftime("%m-%d-%Y")
 app = FastAPI()
 
 origins = [
-    "http://127.0.0.1:8000/",
+    "http://127.0.0.1:8000",
     "https://rapidapi.com",
     "https://altapi1.p.rapidapi.com"
     ]
