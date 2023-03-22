@@ -38,7 +38,7 @@ def summarize_financial_statement(ticker: str = Path(..., description = "Enter t
         #print(current_user.email)
         value = (analyse_financial_statements(ticker, financial_statement))
         print(value)
-        #new_data = models.SummarizeFinancialStatement(**value) #** unpacks the dictionary
+        #new_data = models.SummarizeFinancialStatement(**value)
         #db.add(new_data)
         #db.commit()
         #db.refresh(new_data)
