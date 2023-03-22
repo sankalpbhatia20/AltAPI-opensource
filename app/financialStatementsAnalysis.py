@@ -6,7 +6,7 @@ from .config import settings
 # replace YOUR_API_KEY with your actual API key
 finnhub_client = finnhub.Client(api_key= f'{settings.finnhub_token}')
 
-def analyse_financial_statements(ticker, statement_to_be_analysed, frequency = 'quarterly'):
+def analyse_financial_statements(ticker, statement_to_be_analysed, frequency):
     # replace SYMBOL with the stock symbol of the company you want to get financial statements for (e.g., AAPL for Apple Inc.)
     financials = finnhub_client.financials_reported(symbol = ticker, freq = frequency)
 
