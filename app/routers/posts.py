@@ -32,11 +32,11 @@ def sentiment_extraction(asset: str = Path(..., description = "Enter the asset n
     except Exception as e:
         return {"error" : e}
 
-@router.get('/summarize-financial-statements/{ticker}/{financial_statement}', status_code=status.HTTP_202_ACCEPTED)
-def summarize_financial_statement(ticker: str = Path(..., description = "Enter the US company ticker name : "), financial_statement: str = Path(..., description = "Enter the financial statement you want a summary for (balance_sheet, cashflow or income_statement) : "), db: Session = Depends(get_db)):
+@router.get('/summarize-financial-statements/{ticker}/{financial_statement}/{frequency}', status_code=status.HTTP_202_ACCEPTED)
+def summarize_financial_statement(ticker: str = Path(..., description = "Enter the US company ticker name : "), financial_statement: str = Path(..., description = "Enter the financial statement you want a summary for (balance_sheet, cashflow or income_statement) : "), frequency: str = Path('quaterly', description = "Enter the frequency of the statements (quarterly or annual): "), db: Session = Depends(get_db)):
     try:
         #print(current_user.email)
-        value = (analyse_financial_statements(ticker, financial_statement))
+        value = (analyse_financial_statements(ticker, financial_statement, frequency))
         print(value)
         #new_data = models.SummarizeFinancialStatement(**value)
         #db.add(new_data)
