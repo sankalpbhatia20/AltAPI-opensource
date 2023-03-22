@@ -36,6 +36,7 @@ def google_playstore_app_reviews(company: str = Path(..., description = "Enter t
     try:
         review_analysis = (get_google_playstore_app_reviews(company))
         print(review_analysis)
+        #connecting database
         #new_data = models.GooglePlayStoreReviewAnalysis(**review_analysis) #** unpacks the dictionary
         #db.add(new_data)
         #db.commit()
