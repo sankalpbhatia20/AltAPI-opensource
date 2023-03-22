@@ -42,7 +42,6 @@ def summarize_financial_statement(ticker: str = Path(..., description = "Enter t
         #db.add(new_data)
         #db.commit()
         #db.refresh(new_data)
-
         return value
     except Exception as e:
         return {"error" : e}
