@@ -34,3 +34,6 @@ bt==0.2.9
 poetry
 pyproject-toml==0.0.10
 google-play-scraper==1.2.3
+yahoo_fin==0.8.9.1
+finnhub-python==2.4.16
+openai
