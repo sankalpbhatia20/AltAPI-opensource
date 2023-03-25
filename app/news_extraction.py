@@ -16,7 +16,7 @@ from .newsSummarization import text_summarization
 from timeit import default_timer as timer
 
 today = date.today()
-user_date = today.today() + relativedelta(weeks=-1)
+user_date = today.today() + relativedelta(days=-1)
 user_date = user_date.strftime("%m-%d-%Y")
 end_date = today.today().strftime("%m-%d-%Y")
 
