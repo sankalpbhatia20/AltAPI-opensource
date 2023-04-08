@@ -41,7 +41,6 @@ def news(asset, start_date = user_date, end_date = end_date):
     #end_date = start_date
 
     try:
-        print(asset)
         if asset != '':
             #Extract News with Google News
             googlenews = GoogleNews(start = start_date, end = end_date)
