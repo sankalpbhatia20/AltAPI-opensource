@@ -57,7 +57,6 @@ def google_playstore_app_reviews(company: str = Path(..., description = "Enter t
         #db.add(new_data)
         #db.commit()
         #db.refresh(new_data)
-
         return review_analysis
     except Exception as e:
         return {"error" : e}
