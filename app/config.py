@@ -2,10 +2,11 @@ from pydantic import BaseSettings
 
 class Settings(BaseSettings):
     database_url: str
-    database_hostname: str
-    database_port: str
-    database_password: str
+    pghost: str
+    pgport: str
+    pgpassword: str
     pgdatabase: str
+    pguser: str
     huggingface_token: str 
     finnhub_token: str
     openai_token: str
