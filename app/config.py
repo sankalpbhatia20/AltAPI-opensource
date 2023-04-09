@@ -5,7 +5,7 @@ class Settings(BaseSettings):
     database_hostname: str
     database_port: str
     database_password: str
-    database_username: str
+    pgdatabase: str
     huggingface_token: str 
     finnhub_token: str
     openai_token: str
