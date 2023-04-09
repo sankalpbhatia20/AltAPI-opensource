@@ -60,13 +60,7 @@ def news(asset, start_date = user_date, end_date = end_date):
                     article.download() #downloading the article 
                     article.parse() #parsing the article
                     article.nlp() #performing natural language processing (nlp)
-                #except Exception as e:
-                    #pass
-                    #print('***FAILED TO DOWNLOAD***', article.url)
-                    #return {"Error" : e}
 
-                    #continue
-                    #return {"Error" : "No news has been published about {} today till now. Try again soon!".format(asset)}
                 #storing results in our empty dictionary
                     dict['Date']=df['date'][i] 
                     dict['Media']=df['media'][i]
