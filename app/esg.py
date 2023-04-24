@@ -40,6 +40,5 @@ def esg_scores(asset):
         final_json = json.loads(json_response)
 
         return final_json
-    
     except:
         return {"Error": "Enter the correct ticker"}
