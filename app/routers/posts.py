@@ -27,6 +27,7 @@ def sentiment_extraction(asset: str = Path(..., description = "Enter the asset n
         db.add(new_data)
         db.commit()
         db.refresh(new_data)
+        #test comment
 
         return value
     except Exception as e:
