@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import time
 import json
+from .config import settings
 
 def get_google_playstore_app_reviews(company):
 
@@ -37,7 +38,7 @@ def get_google_playstore_app_reviews(company):
 
     # Usign huginface API to get most positive and negative comments
     API_URL = "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english"
-    headers = {"Authorization": "Bearer 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"}
+    headers = {"Authorization": f'Bearer {settings.HUGGINGFACE_TOKEN}'}
 
     def query(payload):
         response = requests.post(API_URL, headers=headers, json=payload)
